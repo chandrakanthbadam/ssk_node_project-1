@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  .responsive {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+}
+</style>
+</head>
+<body>
+  <center><img src="/../images/sskHeader.png" alt="Nature" class="responsive"></center>
+<div class="container">
+  <form action="/ssk/updateGraduateSenses" method="POST">
+
+    <div class="row">
+        <div class="col-25">
+          <label for="firstName" style="font-size: 20px; font: bolder;"><b>Personal Details</b></label>
+        </div>
+      </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="firstName">First Name *</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="firstName" name="firstName" placeholder="Enter Your First Name.." required>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-25">
+          <label for="middleName">Middle Name</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="middleName" name="middleName" placeholder="Enter Your Middle Name..">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-25">
+          <label for="lastName">Last Name *</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lastName" name="lastName" placeholder="Enter Your Last Name.." required>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fathersName">Father's Name *</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fathersName" name="fathersName" placeholder="Enter Your Father's Name.." required>
+      </div>
+  </div>
+
+    <div class="row">
+        <div class="col-25">
+          <label for="address" style="font-size: 20px; font: bolder;"><b>Address</b></label>
+        </div>
+      </div>
+    
+
+
+
+
+
+
+      <div class="row">
+        <div class="col-25">
+          <label for="village">Village</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="village" name="village" placeholder="Enter Your Village Name..">
+        </div>
+      </div>
+  
+      <div class="row">
+          <div class="col-25">
+            <label for="mandal">Mandal</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="mandal" name="mandal" placeholder="Enter Your Mandal Name..">
+          </div>
+      </div>
+  
+      <div class="row">
+          <div class="col-25">
+            <label for="district">District</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="district" name="district" placeholder="Enter Your District Name..">
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="memberOfSamaj">Member of Samaj</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="memberOfSamaj" name="memberOfSamaj" placeholder="Member of Samaj">
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-25">
+          <label for="address" style="font-size: 20px; font: bolder;"><b>Education Details</b></label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="course">Course</label>
+        </div>
+        <div class="col-75">
+          <select id="course" name="course">
+            <option value="" >--Select--</option>
+            <% for(var i=0; i < courseList.length; i++) { %>
+              <option value="<%=courseList[i].course_name %>"><%=courseList[i].course_name %></option>
+            <% } %>
+            <!-- <option value="B.Sc">B.Sc</option>
+            <option value="B.Com">B.Com</option>
+            <option value="BA">BA</option>
+            <option value="BA">MA</option>
+            <option value="M.Sc">M.Sc</option>
+            <option value="B.Tech">B.Tech</option>
+            <option value="B.Pharm">B.Pharm</option>
+            <option value="MBBS">MBBS</option>
+            <option value="MD">MD</option>
+            <option value="Others">Others</option> -->
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="specialisation">Specialisation</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="specialisation" name="specialisation" placeholder="Enter Your Specialisation..">
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="yearOfPass">Year Of Pass</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="yearOfPass" name="yearOfPass" placeholder="Enter Your Year Of Pass..">
+      </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-25">
+      <label for="address" style="font-size: 20px; font: bolder;"><b>Contact Details</b></label>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="emailAddress">Email Address *</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="emailAddress" name="emailAddress" placeholder="Enter Email Address" required>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-25">
+          <label for="mobileNumber">Mobile Number *</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="mobileNumber" name="mobileNumber" placeholder="Enter Your Mobile Number.." required>
+        </div>
+      </div>
+  
+      <div class="row">
+          <div class="col-25">
+            <label for="whatsAppNumber">WhatsApp Number</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="whatsAppNumber" name="whatsAppNumber" placeholder="Enter Your WhatsApp Number..">
+          </div>
+      </div>
+  
+      <div class="row">
+          <div class="col-25">
+            <label for="alternateNumber">Alternate Number</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="alternateNumber" name="alternateNumber" placeholder="Enter Your Alternate Number..">
+          </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-25">
+          <label for="address" style="font-size: 20px; font: bolder;"><b>Others</b></label>
+        </div>
+      </div>
+
+    <div class="row">
+        <div class="col-25">
+          <label for="remarks">Remarks Any</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="remarks" name="remarks" placeholder="Enter Your Remarks">
+        </div>
+      </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="suggestions">Suggestions</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="suggestions" name="suggestions" placeholder="Enter Suggestions">
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

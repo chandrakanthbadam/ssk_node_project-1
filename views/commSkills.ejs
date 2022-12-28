@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  .responsive {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+}
+</style>
+
+</head>
+<body>
+  <center><img src="/../images/sskHeader.png" alt="Nature" class="responsive"></center>
+<div class="container">
+  <form action="/ssk/updateRegistration" method="POST">
+   <h3> Fill the form to register for communication skills. </h3>
+    <div class="row">
+        <div class="col-25">
+          <label for="firstName" style="font-size: 20px; font: bolder;"><b>Personal Details</b></label>
+        </div>
+      </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fullName">Full Name *</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fullName" name="fullName" placeholder="Enter Your Full Name.." required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fathersName">Father's Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fathersName" name="fathersName" placeholder="Enter Your Last Name.." >
+      </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-25">
+      <label for="qualification">Qualification *</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="qualification" name="qualification" placeholder="Enter Your Qualificatione.." required>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-25">
+      <label for="age">Age</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="age" name="age" placeholder="Enter Your Age.." >
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="col-25">
+    <label for="presentPosition">Present position</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="presentPosition" name="presentPosition" placeholder="Enter Present position.." >
+  </div>
+</div>
+
+
+  <div class="row">
+    <div class="col-25">
+      <label for="address" style="font-size: 20px; font: bolder;"><b>Contact Details</b></label>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="emailAddress">Email Address *</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="emailAddress" name="emailAddress" placeholder="Enter Email Address" required>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-25">
+          <label for="mobileNumber">Mobile Number *</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="mobileNumber" name="mobileNumber" placeholder="Enter Your Mobile Number.." required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="address">Address</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="address" name="address" placeholder="Enter Your Address.." >
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-25">
+          <label for="gramSabha">Name of the Gram Sabha *</label>
+        </div>
+        <div class="col-75">
+          <select id="gramSabha" name="gramSabha" onchange="ShowHideDiv(this)"required>
+             <option value="" >--Select--</option>            
+            <% for(var i=0; i < gramSabhaList.length; i++) { %>
+              <option value="<%=gramSabhaList[i].gram_sabha %>"><%=gramSabhaList[i].gram_sabha %></option>
+            <% } %>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row"  id = "other" style="display: none;">
+        <div class="col-25">
+          <label for="address">Others</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="txtOther" name="others" placeholder="Others.."  >
+        </div>
+      </div>
+     
+    <br>
+    <br>
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
+<script type="text/javascript"> 
+  function ShowHideDiv(selectedValue) {
+       var selectedValue2 = selectedValue.value;
+       if(selectedValue2=="Others")
+       {
+         document.getElementById("other").style.display = 'block';
+       }
+      else
+       {
+        document.getElementById("other").style.display = 'none';
+       }
+    }
+</script>

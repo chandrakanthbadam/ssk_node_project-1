@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  .responsive {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+}
+</style>
+</head>
+<body>
+  <center><img src="/../images/marriageImg.jpeg" alt="Nature" class="responsive"></center>
+<div class="container">
+  <form action="/ssk/uploadpp" enctype="multipart/form-data" method="POST">
+
+    <div class="row">
+        <div class="col-25">
+          <label for="firstName" style="font-size: 20px; font: bolder;"><b>Personal Details</b></label>
+        </div>
+      </div>
+
+      
+    <div class="row">
+      <div class="col-25">
+        <label for="fullName">Name and Surname of Bride / BrideGroom *</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fullName" name="fullName" placeholder="Name and Surname of Bride / BrideGroom" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="photo">Bride/Groom Photo *</label>
+      </div>
+      <div class="col-75">
+        <input type="file" id="photo" name="photo" placeholder="Photo" required>
+      </div>
+    </div>
+
+    <!--<div class="row">
+      <div class="col-25">
+        <label for="fullName">Upload Latest photograph of Bride / Bride groom*</label>
+      </div>
+      <div class="col-75">
+        <input type="file" name="filetoupload">
+      </div>
+    </div>  -->
+    <div class="row">
+      <div class="col-25">
+        <label for="fathersName">Father's Name *</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fathersName" name="fathersName" placeholder="Enter Your Father's Name.." required>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-25">
+      <label for="mothersName">Mother's Name *</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="mothersName" name="mothersName" placeholder="Enter Your Mother's Name.." required>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-25">
+    <label for="dob">Date of Birth *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="dob" name="dob" placeholder="Enter Your Date of Birth.." required>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-25">
+    <label for="placeOfBirth">Place of Birth *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="placeOfBirth" name="placeOfBirth" placeholder="Enter Your Place of Birth.." required>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-25">
+    <label for="timeOfBirth">Time of Birth *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="timeOfBirth" name="timeOfBirth" placeholder="Enter Your Time of Birth.." required>
+  </div>
+</div>
+<div class="row">
+  <div class="col-25">
+    <label for="timeOfBirth">Janma Naam *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="janmaNaam" name="janmaNaam" placeholder="Enter Your Janma Naam.." required>
+  </div>
+</div>
+<div class="row">
+  <div class="col-25">
+    <label for="timeOfBirth">Nakshatar *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="nakshatar" name="nakshatar" placeholder="Enter Your Nakshatar.." required>
+  </div>
+</div>
+<div class="row">
+  <div class="col-25">
+    <label for="timeOfBirth">Rashi *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="rashi" name="rashi" placeholder="Enter Your Rashi.." required>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-25">
+    <label for="heightOfBOrG">Height of the Bride/Bridegroom *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="heightOfBOrG" name="heightOfBOrG" placeholder="Enter Height of the Bride/Bridegroom.." required>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-25">
+    <label for="gotra">Gotra *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="gotra" name="gotra" placeholder="Enter Gotra.." required>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-25">
+    <label for="qualification">Educational qualification *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="qualification" name="qualification" placeholder="Enter Educational qualification.." required>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-25">
+    <label for="proffession">Job / Proffession *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="proffession" name="proffession" placeholder="Enter Job / Proffession.." required>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-25">
+    <label for="fathersMobNum">Mobile Number of Father *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="fathersMobNum" name="fathersMobNum" placeholder="Enter Mobile Number of Father.." required>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-25">
+    <label for="mothersMobNum">Mobile Number of Mother *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="mothersMobNum" name="mothersMobNum" placeholder="Enter Mobile Number of Mother.." required>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-25">
+    <label for="siblingsDetails">Number of siblings and details *</label>
+  </div>
+  <div class="col-75">
+    <textarea type="text" id="siblingsDetails" name="siblingsDetails" placeholder="Enter Number of siblings and details.." required>
+    </textarea>
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="col-25">
+    <label for="prosective">What are you looking for in the prosective Bride or Bridegroom *</label>
+  </div>
+  <div class="col-75">
+    <textarea type="text" id="prosective" name="prosective" placeholder="Enter What are you looking for in the prosective Bride or Bridegroom.." required>
+    </textarea>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-25">
+    <label for="otherDetails">Any Other Details *</label>
+  </div>
+  <div class="col-75">
+    <textarea type="text" id="otherDetails" name="otherDetails" placeholder="Enter Any Other Details.." required>
+    </textarea>
+    </div>
+</div>
+
+    
+    <br>
+    <br>
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
