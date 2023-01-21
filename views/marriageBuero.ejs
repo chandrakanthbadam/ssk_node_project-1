@@ -84,16 +84,40 @@ input[type=submit]:hover {
           <label for="firstName" style="font-size: 20px; font: bolder;"><b>Personal Details</b></label>
         </div>
       </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="fullName">Surname of Bride / BrideGroom *</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="surName" name="surName" placeholder="Sur Name" required>
+          
+        </div>
+        
+        </div>
 
-      
-    <div class="row">
-      <div class="col-25">
-        <label for="fullName">Name and Surname of Bride / BrideGroom *</label>
+      <div class="row">
+        <div class="col-25">
+          <label for="fullName">Name of Bride / BrideGroom *</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="name" name="name" placeholder="Name of Bride / BrideGroom" required>
+        </div>
       </div>
-      <div class="col-75">
-        <input type="text" id="fullName" name="fullName" placeholder="Name and Surname of Bride / BrideGroom" required>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="gotra">Gotra *</label>
+        </div>
+        <div class="col-75">
+          <select id="gotra" name="gotra" onchange="ShowHideDiv(this)">
+            <option value="" >--Select--</option>
+            <% for(var i=0; i < gotras.length; i++) { %>
+              <option value=<%=gotras[i].gotra %>> <%=gotras[i].gotra %></option>
+            <% } %>
+          </select>
+        </div>
+        Note : if you don't find your gotra please contact admin in WhatsApp: +91 9059415505
       </div>
-    </div>
 
     <div class="row">
       <div class="col-25">
@@ -103,15 +127,7 @@ input[type=submit]:hover {
         <input type="file" id="photo" name="photo" placeholder="Photo" required>
       </div>
     </div>
-
-    <!--<div class="row">
-      <div class="col-25">
-        <label for="fullName">Upload Latest photograph of Bride / Bride groom*</label>
-      </div>
-      <div class="col-75">
-        <input type="file" name="filetoupload">
-      </div>
-    </div>  -->
+    
     <div class="row">
       <div class="col-25">
         <label for="fathersName">Father's Name *</label>
@@ -135,7 +151,7 @@ input[type=submit]:hover {
     <label for="dob">Date of Birth *</label>
   </div>
   <div class="col-75">
-    <input type="text" id="dob" name="dob" placeholder="Enter Your Date of Birth.." required>
+    <input type="date" id="dob" name="dob" placeholder="Enter Your Date of Birth.." required>
   </div>
 </div>
 
@@ -153,7 +169,7 @@ input[type=submit]:hover {
     <label for="timeOfBirth">Time of Birth *</label>
   </div>
   <div class="col-75">
-    <input type="text" id="timeOfBirth" name="timeOfBirth" placeholder="Enter Your Time of Birth.." required>
+    <input type="time" id="timeOfBirth" name="timeOfBirth" placeholder="Enter Your Time of Birth.." required>
   </div>
 </div>
 <div class="row">
@@ -169,7 +185,36 @@ input[type=submit]:hover {
     <label for="timeOfBirth">Nakshatar *</label>
   </div>
   <div class="col-75">
-    <input type="text" id="nakshatar" name="nakshatar" placeholder="Enter Your Nakshatar.." required>
+    <select name="nakshatar" id="rashi">
+      <option value="">--Select--</option>
+      <option value="Aswini">Aswini</option>
+      <option value="Bharani">Bharani</option>
+      <option value="Kritika">Kritika</option>
+      <option value="Rohini">Rohini</option>
+      <option value="Mrugasira">Mrugasira</option>
+      <option value="Arudra">Arudra</option>
+      <option value="Punarvasu">Punarvasu</option>
+      <option value="Pushya">Pushya</option>
+      <option value="Ashlesha">Ashlesha</option>
+      <option value="Makha">Makha</option>
+      <option value="Pubba">Pubba</option>
+      <option value="Uttara">Uttara</option>
+      <option value="Hasta">Hasta</option>
+      <option value="Chitta">Chitta</option>
+      <option value="Swathi">Swathi</option>
+      <option value="Vishakha">Vishakha</option>
+      <option value="Anuradha">Anuradha</option>
+      <option value="Jyestha">Jyestha</option>
+      <option value="Moola">Moola</option>
+      <option value="Poorvashadha">Poorvashadha</option>
+      <option value="Uttarashadha">Uttarashadha</option>
+      <option value="Shravana">Shravana</option>
+      <option value="Dhanishta">Dhanishta</option>
+      <option value="Shatabhisha">Shatabhisha</option>
+      <option value="Poorvabhadra">Poorvabhadra</option>
+      <option value="Uttarabhadra">Uttarabhadra</option>
+      <option value="Revati">Revati</option>
+    </select>
   </div>
 </div>
 <div class="row">
@@ -177,7 +222,21 @@ input[type=submit]:hover {
     <label for="timeOfBirth">Rashi *</label>
   </div>
   <div class="col-75">
-    <input type="text" id="rashi" name="rashi" placeholder="Enter Your Rashi.." required>
+    <select name="rashi" id="rashi">
+      <option value="">--Select--</option>
+      <option value="Mesham">Mesham</option>
+      <option value="Vrushabham">Vrushabham</option>
+      <option value="Midhunam">Midhunam</option>
+      <option value="Karkatakam">Karkatakam</option>
+      <option value="Simham">Simham</option>
+      <option value="Kanya">Kanya</option>
+      <option value="Thula">Thula</option>
+      <option value="Vruschikam">Vruschikam</option>
+      <option value="Dhanussu">Dhanussu</option>
+      <option value="Makaram">Makaram</option>
+      <option value="Kumbham">Kumbham</option>
+      <option value="Meenam">Meenam</option>
+    </select>
   </div>
 </div>
 
@@ -190,14 +249,7 @@ input[type=submit]:hover {
   </div>
 </div>
 
-<div class="row">
-  <div class="col-25">
-    <label for="gotra">Gotra *</label>
-  </div>
-  <div class="col-75">
-    <input type="text" id="gotra" name="gotra" placeholder="Enter Gotra.." required>
-  </div>
-</div>
+
 
 <div class="row">
   <div class="col-25">

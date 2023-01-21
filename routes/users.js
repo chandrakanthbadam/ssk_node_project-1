@@ -94,10 +94,10 @@ router.get('/communications', function(req, res, next) {
   });
 
 router.get('/marriageBuero', function(req, res, next) { 
-  var sql='SELECT course_name FROM ssk.m_courses;';
+  var sql='SELECT gotra FROM ssk.m_gotra;';
   db.query(sql, function (err, data, fields) {
     if (err) throw err;
-    res.render('marriageBuero', { title: 'User List', courseList: data});
+    res.render('marriageBuero', { title: 'User List', gotras: data});
   });
 });
 
