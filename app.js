@@ -8,7 +8,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-var server = app.listen(process.env.PORT || 8080, () => {
+var server = app.listen(process.env.PORT || 80, () => {
   console.log('Server is started on 127.0.0.1:'+ (process.env.PORT || 80))
 })
 
