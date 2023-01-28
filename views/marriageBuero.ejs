@@ -252,10 +252,10 @@ background:grey;
 
 <div class="row">
   <div class="col-25">
-    <label for="heightOfBOrG">Height of the Bride/Bridegroom *</label>
+    <label for="heightOfBOrG">Height of the Bride/Bridegroom * (in Feets)</label>
   </div>
   <div class="col-75">
-    <input type="text" id="heightOfBOrG" name="heightOfBOrG" placeholder="Enter Height of the Bride/Bridegroom.." required>
+    <input type="number" id="heightOfBOrG" name="heightOfBOrG" placeholder="Enter Height of the Bride/Bridegroom.." required>
   </div>
 </div>
 
@@ -317,7 +317,18 @@ background:grey;
     </textarea>
     </div>
 </div>
-
+<div class="row">
+  <div class="col-25">
+    <label for="status">Status *</label>
+  </div>
+  <div class="col-75">
+    <select name="status" id="status">
+      <option value="">--Select--</option>
+      <option value="Unmarried">Unmarried</option>
+      <option value="Divorced">Divorced</option>
+    </select>
+  </div>
+</div>
 <div class="row">
   <div class="col-25">
     <label for="otherDetails">Any Other Details *</label>

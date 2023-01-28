@@ -102,7 +102,7 @@ router.get('/communications', function (req, res, next) {
 });
 
 router.get('/marriageBuero', function (req, res, next) {
-  var sql = 'SELECT ms.surName, mg.gotra FROM ssk.m_surnames ms, ssk.m_gotra mg where ms.gotra_id =  mg.id;';
+  var sql = 'SELECT ms.surName, mg.gotra FROM ssk.m_surnames ms, ssk.m_gotra mg where ms.gotra_id =  mg.id order by surName;;';
   db.query(sql, function (err, data, fields) {
     let result = Object.values(JSON.parse(JSON.stringify(data)));
     let surNames = []; let gotras = [];
