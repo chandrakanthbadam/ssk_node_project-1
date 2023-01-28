@@ -80,7 +80,7 @@ background:grey;
 </style>
 </head>
 <body>
-  <center><img src="/../images/banner.png" alt="Nature" class="responsive"></center>
+  <center><img src="/../images/banner_1.png" alt="Nature" class="responsive"></center>
 <div class="container">
   <form action="/ssk/uploadpp" enctype="multipart/form-data" method="POST" id="form" class="form">
 
@@ -118,12 +118,13 @@ background:grey;
           <label for="gotra">Gotra *</label>
         </div>
         <div class="col-75 disable" >
-           <select id="gotra" name="gotra" class="gotra">
+           <select id="gotra1" name="gotra1" class="gotra1" disabled>
             <option value="" >--Select--</option>
             <% for(var i=0; i < gotrasList.length; i++) { %>
               <option value=<%=gotrasList[i] %>> <%=gotrasList[i] %></option>
             <% } %>
             </select>
+            <input type="hidden" id = "gotra" name="gotra"/>
         </div>
         Note : if you don't find your gotra please contact admin in WhatsApp: +91 9059415505
       </div>
@@ -337,7 +338,8 @@ background:grey;
 </div>
 <script>
   function ShowHideDiv(){
-    document.getElementById("gotra").selectedIndex = document.getElementById("surName").selectedIndex;
+    document.getElementById("gotra1").selectedIndex = document.getElementById("surName").selectedIndex;
+    document.getElementById("gotra").value = document.getElementById("gotra1").value;
   }
 //   document.getElementById("gotra").readOnly = true;
 //   $("#form").click(function(event){
