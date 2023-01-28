@@ -63,7 +63,7 @@ router.post("/uploadpp", function (req, res, next) {
     var sql = 'INSERT INTO ssk.marriage_bureau_details SET ?';
     db.query(sql, MBDetails, function (error, data) { 
         if (error) {
-
+       throw error;
       // ERROR occurred (here it can be occurred due
       // to uploading image of size greater than
       // 1MB or uploading different file type)
