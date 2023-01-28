@@ -100,8 +100,9 @@ background:grey;
               <option value=<%=surNameList[i] %>> <%=surNameList[i] %></option>
             <% } %>
           </select>
+          Note : if you couldn't find your surname, please contact admin in WhatsApp: +91 9247140428
         </div>
-        
+       
         </div>
 
       <div class="row">
@@ -126,7 +127,6 @@ background:grey;
             </select>
             <input type="hidden" id = "gotra" name="gotra"/>
         </div>
-        Note : if you don't find your gotra please contact admin in WhatsApp: +91 9059415505
       </div>
 
     <div class="row">
@@ -136,6 +136,7 @@ background:grey;
       <div class="col-75">
         <input type="file" id="photo" name="photo" placeholder="Photo" required>
       </div>
+      Note : Please upload your photo of size below 10 MB.
     </div>
     
     <div class="row">
@@ -255,7 +256,7 @@ background:grey;
     <label for="heightOfBOrG">Height of the Bride/Bridegroom * (in Feets)</label>
   </div>
   <div class="col-75">
-    <input type="number" id="heightOfBOrG" name="heightOfBOrG" placeholder="Enter Height of the Bride/Bridegroom.." required>
+    <input type="number" id="heightOfBOrG" name="heightOfBOrG" placeholder="Height" required>
   </div>
 </div>
 
@@ -284,7 +285,7 @@ background:grey;
     <label for="fathersMobNum">Mobile Number of Father *</label>
   </div>
   <div class="col-75">
-    <input type="text" id="fathersMobNum" name="fathersMobNum" placeholder="Enter Mobile Number of Father.." required>
+    <input type="number" id="fathersMobNum" name="fathersMobNum" placeholder="Mobile Number of Father.." required>
   </div>
 </div>
 
@@ -293,7 +294,7 @@ background:grey;
     <label for="mothersMobNum">Mobile Number of Mother *</label>
   </div>
   <div class="col-75">
-    <input type="text" id="mothersMobNum" name="mothersMobNum" placeholder="Enter Mobile Number of Mother.." required>
+    <input type="number" id="mothersMobNum" name="mothersMobNum" placeholder="Mobile Number of Mother.." required>
   </div>
 </div>
 
