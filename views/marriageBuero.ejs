@@ -71,13 +71,18 @@ input[type=submit]:hover {
   margin-right: auto;
   width: 100%;
 }
+
+.gotra{
+pointer-events:none;
+background:grey;
+}
 }
 </style>
 </head>
 <body>
-  <center><img src="/../images/marriageImg.jpeg" alt="Nature" class="responsive"></center>
+  <center><img src="/../images/banner.png" alt="Nature" class="responsive"></center>
 <div class="container">
-  <form action="/ssk/uploadpp" enctype="multipart/form-data" method="POST">
+  <form action="/ssk/uploadpp" enctype="multipart/form-data" method="POST" id="form" class="form">
 
     <div class="row">
         <div class="col-25">
@@ -89,8 +94,12 @@ input[type=submit]:hover {
           <label for="fullName">Surname of Bride / BrideGroom *</label>
         </div>
         <div class="col-75">
-          <input type="text" id="surName" name="surName" placeholder="Sur Name" required>
-          
+          <select id="surName" name="surName" onchange="ShowHideDiv()">
+            <option value="" >--Select--</option>
+            <% for(var i=0; i < surNameList.length; i++) { %>
+              <option value=<%=surNameList[i] %>> <%=surNameList[i] %></option>
+            <% } %>
+          </select>
         </div>
         
         </div>
@@ -108,13 +117,13 @@ input[type=submit]:hover {
         <div class="col-25">
           <label for="gotra">Gotra *</label>
         </div>
-        <div class="col-75">
-          <select id="gotra" name="gotra" onchange="ShowHideDiv(this)">
+        <div class="col-75 disable" >
+           <select id="gotra" name="gotra" class="gotra">
             <option value="" >--Select--</option>
-            <% for(var i=0; i < gotras.length; i++) { %>
-              <option value=<%=gotras[i].gotra %>> <%=gotras[i].gotra %></option>
+            <% for(var i=0; i < gotrasList.length; i++) { %>
+              <option value=<%=gotrasList[i] %>> <%=gotrasList[i] %></option>
             <% } %>
-          </select>
+            </select>
         </div>
         Note : if you don't find your gotra please contact admin in WhatsApp: +91 9059415505
       </div>
@@ -322,10 +331,21 @@ input[type=submit]:hover {
     <br>
     <br>
     <div class="row">
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" id="submit" class="submit">
     </div>
   </form>
 </div>
-
+<script>
+  function ShowHideDiv(){
+    document.getElementById("gotra").selectedIndex = document.getElementById("surName").selectedIndex;
+  }
+//   document.getElementById("gotra").readOnly = true;
+//   $("#form").click(function(event){
+//    event.preventDefault();
+//    $('.gotra').prop("disabled", false); // Element(s) are now enabled.
+// });
+</script>
 </body>
 </html>
+
+
