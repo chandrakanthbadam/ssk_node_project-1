@@ -124,7 +124,7 @@ router.post("/uploadpp", function (req, res, next) {
       
       var mailOptions = {
         from: 'chandrakanthbadam@gmail.com',
-        to: 'saigopal009@gmail.com',
+        to: 'sandeep_sha@hotmail.com',
         subject: 'A new Bride/Groom added',
         html: '<p>Here are the Details</p> ' 
         + '<p>Name : ' +  MBDetails.surName + '</p>'
