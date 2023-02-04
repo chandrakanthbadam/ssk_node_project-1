@@ -125,8 +125,20 @@ router.post("/uploadpp", function (req, res, next) {
       var mailOptions = {
         from: 'chandrakanthbadam@gmail.com',
         to: 'saigopal009@gmail.com',
-        subject: 'Sending Email using Node.js',
-        html: '<h1>Welcome</h1><p>That was easy!</p>'
+        subject: 'A new Bride/Groom added',
+        html: '<p>Here are the Details</p> ' 
+        + '<p>Name : ' +  MBDetails.surName + '</p>'
+        + '<p> Gotra :' +  MBDetails.gotra + '</p>'
+        + '<p> Fathers Name : ' + MBDetails.fathersName + '</p>'
+        + '<p> Mothers Name : ' +  MBDetails.mothersName + '</p>'
+        + '<p> Janma Naam : ' +  MBDetails.janmaNaam + '</p>'
+        + '<p> Nakshatar : ' +  MBDetails.nakshatar  + '</p>'
+        + '<p> Rashi : ' +  MBDetails.rashi + '</p>'
+        + '<p> Educational Qualification : ' +  MBDetails.qualification + '</p>'
+        + '<p> Job / Proffession : ' +  MBDetails.proffession + '</p>'
+        + '<p> Mobile Number of Father : ' +  MBDetails.fathersMobNum + '</p>'
+        + '<p> Mobile Number of Mother : ' +  MBDetails.mothersMobNum + '</p>'
+        + '<p> Status : ' +  MBDetails.status + '</p>'
       };
       
       transporter.sendMail(mailOptions, function(error, info){
