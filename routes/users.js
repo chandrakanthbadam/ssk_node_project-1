@@ -171,7 +171,7 @@ function sendEmail(insertId, MBDetails) {
     
       var mailOptions = {
         from: 'chandrakanthbadam@gmail.com',
-        to: 'saigopal009@gmail.com,sandeep_sha@hotmail.com',
+        to: 'sandeep_sha@hotmail.com',
         subject: 'A new Bride/Groom added',
         html: '<h3>Here are the Details</h3> '
           + '<p>Name : ' + MBDetails.surName + " " + MBDetails.name + '</p>'
