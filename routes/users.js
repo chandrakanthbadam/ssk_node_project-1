@@ -164,14 +164,14 @@ function sendEmail(insertId, MBDetails) {
       var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'chandrakanthbadam@gmail.com',
-          pass: 'gknsidhwmbcfjzas'
+          user: 'sandeep.sha.vishwanath@gmail.com',
+          pass: 'rkfndaexstskjogl'
         }
       });
     
       var mailOptions = {
-        from: 'chandrakanthbadam@gmail.com',
-        to: 'sandeep_sha@hotmail.com',
+        from: 'Lagin Manch - SSK Samaj RJNR',
+        to: 'sandeep_sha@hotmail.com,ssklaginmanch@gmail.com',
         subject: 'A new Bride/Groom added',
         html: '<h3>Here are the Details</h3> '
           + '<p>Name : ' + MBDetails.surName + " " + MBDetails.name + '</p>'
