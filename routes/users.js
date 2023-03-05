@@ -137,11 +137,11 @@ router.post("/uploadpp", function (req, res, next) {
 
 function sendEmail(insertId, MBDetails) {
   var htmlTable = '';
-  var sql = "SELECT Concat(t2.surName, ' ', t2.name) as 'Full Name' , t2.fathersName as 'Fathers Name' , "
-    + " t2.gotra as 'Gotra', t2.qualification as 'Qualification', t2.fathersMobNum as 'Fathers Mobile Number', t2.status as 'Status' "
-    + " FROM ssk.marriage_bureau_details t1, ssk.marriage_bureau_details t2 WHERE t1.id = " + insertId + " AND (t2.status = 'Unmarried' OR t2.status = 'Divorced') AND"
-    + " CASE WHEN t1.gender = 'male' THEN t2.dob >= t1.dob AND t2.gotra != t1.gotra AND t1.gender != t2.gender "
-    + " WHEN t1.gender = 'female' THEN t2.dob <= t1.dob AND t2.gotra != t1.gotra AND t1.gender != t2.gender END;";
+  var sql = "SELECT CONCAT(t2.surName, ' ', t2.name) AS 'Full Name', t2.gender AS Gender, t2.gotra AS 'Gotra', t2.dob, mq2.QUADESC AS 'Qualification', t2.fathersName AS 'Fathers Name', "
+          +" t2.fathersMobNum AS 'Fathers Mobile Number', t2.status AS 'Status' FROM ssk.marriage_bureau_details t1, ssk.marriage_bureau_details t2, ssk.m_qualifications mq1, "
+          +" ssk.m_qualifications mq2 WHERE mq1.QUADESC = t1.qualification AND mq2.QUADESC = t2.qualification AND t1.id = "+insertId+" AND(t2.status = 'Unmarried' OR t2.status = 'Divorced') "
+          +" AND CASE WHEN t1.gender = 'male' THEN t2.dob >= t1.dob AND t2.gotra != t1.gotra AND t1.gender != t2.gender AND mq1.GROUP = mq2.GROUP WHEN t1.gender = 'female' "
+          +" THEN t2.dob <= t1.dob AND t2.gotra != t1.gotra AND t1.gender != t2.gender AND mq1.GROUP = mq2.GROUP END ORDER BY t1.id;";
   db.query(sql, function (err, results, fields) {
 
     let table = "<head> <style> table { border: 1px solid black; border-collapse: collapse; width: 100%; } th, td { border: 1px solid black; padding: 8px; text-align: left; } th { background-color: #f2f2f2; } </style> </head> <table>";
