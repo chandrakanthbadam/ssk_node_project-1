@@ -74,7 +74,7 @@ router.get('/communications', function (req, res, next) {
 });
 
 router.get('/laginManch', function (req, res, next) {
-  var sql = 'SELECT ms.surName, mg.gotra FROM ssk.m_surnames ms, ssk.m_gotra mg where ms.gotra_id =  mg.id order by surName;;';
+  var sql = 'SELECT ms.surName, mg.gotra FROM ssk.m_surnames ms, ssk.m_gotra mg where ms.gotra_id =  mg.id order by surName;';
   db.query(sql, function (err, data, fields) {
     let result = Object.values(JSON.parse(JSON.stringify(data)));
     let surNames = []; let gotras = [];
@@ -83,8 +83,17 @@ router.get('/laginManch', function (req, res, next) {
       gotras.push(result[i].gotra);
     }
     if (err) throw err;
-    res.render('marriageBuero', { surNameList: surNames, gotrasList: gotras });
-  });
+    else {
+      var sql = 'SELECT QUADESC,code FROM ssk.m_qualifications;';
+      db.query(sql, function (err, data, fields) {
+        let result2 = Object.values(JSON.parse(JSON.stringify(data)));
+        if (err) throw err;
+        else{
+          res.render('marriageBuero', { surNameList: surNames, gotrasList: gotras, qualificationa: result2});
+        }
+      });
+    }
+    });
 });
 
 router.post("/uploadpp", function (req, res, next) {
@@ -160,19 +169,25 @@ function sendEmail(insertId, MBDetails) {
     if (err) {
       res.render('error_1', { error: "Error ; " + err.message + " please go back and check the error" });
     }
-    else{
+    else {
       var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
+
           user: 'sandeep.sha.vishwanath@gmail.com',
           pass: 'rkfndaexstskjogl'
         }
       });
-    
+      if (MBDetails.gender == "Male") {
+        var subject = 'A new Bride added - ' + MBDetails.surName + " " + MBDetails.name;
+      }
+      else {
+        var subject = 'A new Groom added - ' + MBDetails.surName + " " + MBDetails.name;
+      }
       var mailOptions = {
-        from: 'Lagin Manch - SSK Samaj RJNR',
+        from: 'sandeep.sha.vishwanath@gmail.com',
         to: 'sandeep_sha@hotmail.com,ssklaginmanch@gmail.com',
-        subject: 'A new Bride/Groom added',
+        subject: subject,
         html: '<h3>Here are the Details</h3> '
           + '<p>Name : ' + MBDetails.surName + " " + MBDetails.name + '</p>'
           + '<p> Gotra :' + MBDetails.gotra + '</p>'
@@ -189,7 +204,7 @@ function sendEmail(insertId, MBDetails) {
           + '<h3>Found Below Matches : </h3> '
           + htmlTable
       };
-    
+
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
           console.log(error);
@@ -201,7 +216,7 @@ function sendEmail(insertId, MBDetails) {
     //res.render('marriageBuero', { surNameList: surNames, gotrasList: gotras });
   });
 
-  
+
 }
 router.post('/updateGraduateSenses', function (req, res, next) {
   const userDetails = req.body;

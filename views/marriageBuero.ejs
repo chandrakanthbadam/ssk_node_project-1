@@ -209,6 +209,39 @@ background:grey;
     <input type="text" id="placeOfBirth" name="placeOfBirth" placeholder="Enter Your Place of Birth.." required>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-25">
+    <label for="stateOfCurrentStay">State of Current Stay *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="stateOfCurrentStay" name="stateOfCurrentStay" placeholder="Enter Your State of Current Stay.." required>
+  </div>
+</div>
+<div class="row">
+  <div class="col-25">
+    <label for="districtOfCurrentStay">District of Current Stay *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="districtOfCurrentStay" name="districtOfCurrentStay" placeholder="Enter Your District of Current Stay.." required>
+  </div>
+</div>
+<div class="row">
+  <div class="col-25">
+    <label for="cityOfCurrentStay">City of Current Stay *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="cityOfCurrentStay" name="cityOfCurrentStay" placeholder="Enter Your City of Current Stay.." required>
+  </div>
+</div>
+<div class="row">
+  <div class="col-25">
+    <label for="placeOfCurrentStay">Place of Current Stay *</label>
+  </div>
+  <div class="col-75">
+    <input type="text" id="placeOfCurrentStay" name="placeOfCurrentStay" placeholder="Enter Your Place of Current Stay.." required>
+  </div>
+</div> 
 <div class="row">
   <div class="col-25">
     <label for="timeOfBirth">Time of Birth *</label>
@@ -303,9 +336,14 @@ background:grey;
     <label for="qualification">Educational qualification *</label>
   </div>
   <div class="col-75">
-    <input type="text" id="qualification" name="qualification" placeholder="Enter Educational qualification.." required>
+    <select id="qualification" name="qualification" onchange="ShowHideDiv()">
+      <option value="" >--Select--</option>
+      <% for(var i=0; i < qualificationa.length; i++) { %>
+        <option value=<%=qualificationa[i].code %>> <%=qualificationa[i].QUADESC %></option>
+      <% } %>
+    </select>
   </div>
-</div>
+  </div>
 
 <div class="row">
   <div class="col-25">
