@@ -173,20 +173,20 @@ function sendEmail(insertId, MBDetails) {
       var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-
           user: 'sandeep.sha.vishwanath@gmail.com',
           pass: 'rkfndaexstskjogl'
         }
       });
+      var subject = "";
       if (MBDetails.gender == "Male") {
-        var subject = 'A new Bride added - ' + MBDetails.surName + " " + MBDetails.name;
+         subject = 'A new Groom added - ' + MBDetails.surName + " " + MBDetails.name;
       }
       else {
-        var subject = 'A new Groom added - ' + MBDetails.surName + " " + MBDetails.name;
+         subject = 'A new Bride added - ' + MBDetails.surName + " " + MBDetails.name;
       }
       var mailOptions = {
         from: 'sandeep.sha.vishwanath@gmail.com',
-        to: 'sandeep_sha@hotmail.com,ssklaginmanch@gmail.com',
+        to: 'sandeep_sha@hotmail.com,ssklaginmanch@gmail.com,chandrakanthbadam@gmail.com',
         subject: subject,
         html: '<h3>Here are the Details</h3> '
           + '<p>Name : ' + MBDetails.surName + " " + MBDetails.name + '</p>'
