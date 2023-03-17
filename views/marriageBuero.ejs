@@ -120,8 +120,8 @@ background:grey;
         <div class="col-75">
           <select name="gender" id="gender">
             <option value="">--Select--</option>
-            <option value="Female">Female</option>
-            <option value="Male">Male</option>
+            <option value="FEMALE">Female</option>
+            <option value="MALE">Male</option>
           </select>
         </div>
       </div>
@@ -333,10 +333,10 @@ background:grey;
 
 <div class="row">
   <div class="col-25">
-    <label for="qualification">Educational qualification *</label>
+    <label for="QUACODE">Educational qualification *</label>
   </div>
   <div class="col-75">
-    <select id="qualification" name="qualification" onchange="ShowHideDiv()">
+    <select id="QUACODE" name="QUACODE" onchange="ShowHideDiv()">
       <option value="" >--Select--</option>
       <% for(var i=0; i < qualificationa.length; i++) { %>
         <option value=<%=qualificationa[i].code %>> <%=qualificationa[i].QUADESC %></option>
