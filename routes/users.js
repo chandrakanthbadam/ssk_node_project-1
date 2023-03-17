@@ -137,11 +137,11 @@ router.post("/uploadpp", function (req, res, next) {
 
 function sendEmail(insertId, MBDetails) {
   var htmlTable = '';
-  var sql = "SELECT CONCAT(t2.surName, ' ', t2.name) AS 'Full Name', t2.gender AS Gender, t2.gotra AS 'Gotra', t2.dob, mq2.QUADESC AS 'Qualification', t2.fathersName AS 'Fathers Name', "
-          +" t2.fathersMobNum AS 'Fathers Mobile Number', t2.status AS 'Status' FROM ssk.marriage_bureau_details t1, ssk.marriage_bureau_details t2, ssk.m_qualifications mq1, "
-          +" ssk.m_qualifications mq2 WHERE mq1.QUADESC = t1.qualification AND mq2.QUADESC = t2.qualification AND t1.id = "+insertId+" AND(t2.status = 'Unmarried' OR t2.status = 'Divorced') "
-          +" AND CASE WHEN t1.gender = 'MALE' THEN t2.dob >= t1.dob AND t2.gotra != t1.gotra AND t1.gender != t2.gender AND mq1.GROUP = mq2.GROUP WHEN t1.gender = 'FEMALE' "
-          +" THEN t2.dob <= t1.dob AND t2.gotra != t1.gotra AND t1.gender != t2.gender AND mq1.GROUP = mq2.GROUP END ORDER BY t1.id;";
+  var sql = "SELECT t2.id, CONCAT(t2.surName, ' ', t2.name) AS 'Full Name', t2.gender AS 'Gender', t2.gotra AS 'Gotra', t2.dob AS 'DOB', mq2.QUADESC AS 'Qualification', "
+          + " t2.fathersName AS 'Fathers Name', t2.fathersMobNum AS 'Fathers Mobile Number', t2.cityOfBirth AS 'City of Birth', t2.placeOfCurrentStay AS 'Current Stay', t2.status AS 'Status' "
+          + " FROM ssk.marriage_bureau_details t1, ssk.marriage_bureau_details t2, ssk.m_qualifications mq1, ssk.m_qualifications mq2 WHERE mq1.code = t1.QUACODE AND mq2.code = t2.QUACODE "
+          + " AND t1.id in( "+insertId+" ) AND (t2.status = 'UNMARRIED' OR t2.status = 'DIVORCED') AND CASE WHEN t1.gender = 'MALE' THEN t2.dob >= t1.dob AND t2.gotra != t1.gotra AND t1.gender != t2.gender "
+          + " AND mq1.GROUP = mq2.GROUP WHEN t1.gender = 'FEMALE' THEN t2.dob <= t1.dob AND t2.gotra != t1.gotra AND t1.gender != t2.gender AND mq1.GROUP = mq2.GROUP END ORDER BY t1.id;";
   db.query(sql, function (err, results, fields) {
 
     let table = "<head> <style> table { border: 1px solid black; border-collapse: collapse; width: 100%; } th, td { border: 1px solid black; padding: 8px; text-align: left; } th { background-color: #f2f2f2; } </style> </head> <table>";
@@ -189,14 +189,17 @@ function sendEmail(insertId, MBDetails) {
         to: 'sandeep_sha@hotmail.com,ssklaginmanch@gmail.com,chandrakanthbadam@gmail.com',
         subject: subject,
         html: '<h3>Here are the Details</h3> '
-          + '<p>Name : ' + MBDetails.surName + " " + MBDetails.name + '</p>'
-          + '<p> Gotra :' + MBDetails.gotra + '</p>'
+          + '<p>Full Name : ' + MBDetails.surName + " " + MBDetails.name + '</p>'
+          + '<p>Gender : ' + MBDetails.gender + '</p>'
           + '<p> Fathers Name : ' + MBDetails.fathersName + '</p>'
           + '<p> Mothers Name : ' + MBDetails.mothersName + '</p>'
+          + '<p> Gotra :' + MBDetails.gotra + '</p>'
           + '<p> Janma Naam : ' + MBDetails.janmaNaam + '</p>'
           + '<p> Nakshatar : ' + MBDetails.nakshatar + '</p>'
           + '<p> Rashi : ' + MBDetails.rashi + '</p>'
           + '<p> Educational Qualification : ' + MBDetails.QUACODE + '</p>'
+          + '<p> Place of Birth : ' + MBDetails.placeOfBirth + '</p>'
+          + '<p> Place of Current Stay : ' + MBDetails.placeOfCurrentStay + '</p>'
           + '<p> Job / Proffession : ' + MBDetails.proffession + '</p>'
           + '<p> Mobile Number of Father : ' + MBDetails.fathersMobNum + '</p>'
           + '<p> Mobile Number of Mother : ' + MBDetails.mothersMobNum + '</p>'
