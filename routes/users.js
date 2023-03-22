@@ -226,11 +226,7 @@ router.post('/updateGraduateCensus', function (req, res, next) {
   var sql = 'INSERT INTO graduate_senses SET ?';
   db.query(sql, userDetails, function (err, data) {
     if (err) {
-      if (err.code == "ER_DUP_ENTRY") {
-        console.log(err);
-        res.render('error');
-        // throw err;
-      }
+        res.render('error_1', { error: "Error : " + err.sqlMessage + " please go back and check the error" });
     }
     else {
       console.log("User data is inserted successfully ");

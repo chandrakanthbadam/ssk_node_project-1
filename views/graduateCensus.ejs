@@ -209,7 +209,33 @@ input[type=submit]:hover {
           <input type="text" id="specialisation" name="specialisation" placeholder="Enter Your Specialisation..">
         </div>
     </div>
-
+    <div class="row">
+      <div class="col-25">
+        <label for="educationStatus">Pursuing/Completed</label>
+      </div>
+      <div class="col-75">
+      <select id="educationStatus" name="educationStatus" onchange="ShowHideDiv(this)" required>
+        <option value="" >--Select--</option>
+         <option value="Pursuing">Pursuing</option>
+        <option value="Completed ">Completed</option>
+      </select>
+    </div>
+  </div>
+  <div class="row" id = "yearOfPursuing" style="display: none;">
+    <div class="col-25">
+      <label for="yearOfPursuing">If Pursuing, Select Year</label>
+    </div>
+    <div class="col-75">
+    <select id="yearOfPursuingSel" name="yearOfPursuing">
+      <option value="" >--Select--</option>
+       <option value="1st">1st</option>
+      <option value="2nd ">2nd</option>
+      <option value="3rd">3rd</option>
+      <option value="4th ">4th</option>
+      <option value="5th ">5th</option>
+    </select>
+  </div>
+</div>
     <div class="row">
       <div class="col-25">
         <label for="yearOfPass">Year Of Pass</label>
@@ -298,3 +324,17 @@ input[type=submit]:hover {
 
 </body>
 </html>
+<script type="text/javascript"> 
+  function ShowHideDiv(selectedValue) {
+       var selectedValue2 = selectedValue.value;
+       if(selectedValue2=="Pursuing")
+       {
+         document.getElementById("yearOfPursuing").style.display = 'block';
+       }
+      else
+       {
+        document.getElementById("yearOfPursuingSel").value = "";
+        document.getElementById("yearOfPursuing").style.display = 'none';
+       }
+    }
+</script>
