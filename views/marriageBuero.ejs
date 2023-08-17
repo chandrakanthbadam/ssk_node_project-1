@@ -66,7 +66,6 @@ input[type=submit]:hover {
     margin-top: 0;
   }
   .responsive {
-    display: block;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -80,7 +79,7 @@ background:grey;
 </style>
 </head>
 <body>
-  <center><img src="/../images/banner.jpg" alt="Nature" class="responsive"></center>
+  <center><img src=<%=logoURL %> alt="Nature" class="responsive" style="width: -webkit-fill-available;"></center>
 <div class="container">
   <form action="/uploadpp" enctype="multipart/form-data" method="POST" id="form" class="form">
 

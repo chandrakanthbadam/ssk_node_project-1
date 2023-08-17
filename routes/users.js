@@ -74,6 +74,15 @@ router.get('/communications', function (req, res, next) {
 });
 
 router.get('/laginManch', function (req, res, next) {
+  console.log(req.headers.host);
+  var logoURL = '';
+  if(req.headers.host == 'ssksamajrjnr.org:8080'){
+     logoURL = "/../images/banner.jpg";
+  }
+  else if(req.headers.host == 'ssksamajwgl.org:8080'){
+    logoURL = "/../images/sskWglLogo.jpg";
+  }
+     
   var sql = 'SELECT ms.surName, mg.gotra FROM ssk.m_surnames ms, ssk.m_gotra mg where ms.gotra_id =  mg.id order by surName;';
   db.query(sql, function (err, data, fields) {
     let result = Object.values(JSON.parse(JSON.stringify(data)));
@@ -89,7 +98,7 @@ router.get('/laginManch', function (req, res, next) {
         let result2 = Object.values(JSON.parse(JSON.stringify(data)));
         if (err) throw err;
         else{
-          res.render('marriageBuero', { surNameList: surNames, gotrasList: gotras, qualificationa: result2});
+  res.render('marriageBuero', { surNameList: surNames, gotrasList: gotras, qualificationa: result2, logoURL : logoURL});
         }
       });
     }
@@ -178,7 +187,7 @@ function sendEmail(insertId, MBDetails) {
         }
       });
       var subject = "";
-      if (MBDetails.gender == "Male") {
+      if (MBDetails.gender == "MALE") {
          subject = 'A new Groom added - ' + MBDetails.surName + " " + MBDetails.name;
       }
       else {
